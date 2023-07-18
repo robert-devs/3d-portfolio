@@ -6,6 +6,8 @@ import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { textVariant } from "../utils/motion";
 
+/* eslint-disable react-refresh/only-export-components */
+
 /* eslint-disable react/prop-types */
 import {
   VerticalTimeline,
