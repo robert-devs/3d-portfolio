@@ -219,9 +219,9 @@ const projects = [
     source_code_link: "https://github.com/",
   },
   {
-    name: "Job IT",
+    name: "E-Dairies",
     description:
-      "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
+      "Web application that enables users to create,like and comment on other peoples memories, view the created time and date an user can create his page  .",
     tags: [
       {
         name: "react",
@@ -232,8 +232,12 @@ const projects = [
         color: "green-text-gradient",
       },
       {
-        name: "scss",
+        name: "tailwind",
         color: "pink-text-gradient",
+      },
+      {
+        name: "nodejs",
+        color: "red",
       },
     ],
     image: jobit,
