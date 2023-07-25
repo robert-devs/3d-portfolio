@@ -15,6 +15,7 @@ import {
   git,
   figma,
   docker,
+  restarunt,
   meta,
   starbucks,
   tesla,
@@ -23,9 +24,15 @@ import {
   jobit,
   tripguide,
   threejs,
+  bank,
+  dalle,
 } from "../assets";
 
 export const navLinks = [
+  {
+    id: "projects",
+    title: "Projects",
+  },
   {
     id: "about",
     title: "About",
@@ -197,6 +204,66 @@ const testimonials = [
 ];
 
 const projects = [
+  {
+    name: "Dall-E",
+    description:
+      "Web-based platform that allows users to use  OpenAI that can generate images from textual descriptions. It uses a combination of deep learning and generative modeling techniques .",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: dalle,
+    source_code_link: "https://github.com/",
+  },
+  {
+    name: "Business App",
+    description:
+      "A modern UI bank business app can streamline financial transactions and provide real-time data insights to help businesses make informed decisions.",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: bank,
+    source_code_link: "https://github.com/",
+  },
+  {
+    name: " Restaurant App",
+    description:
+      "its  a static web-application that involve the Modern restaurants offer a fresh often focused on locally-sourced ingredients, innovative cooking techniques, and stylish deco .",
+    tags: [
+      {
+        name: "react",
+        color: "blue-text-gradient",
+      },
+      {
+        name: "mongodb",
+        color: "green-text-gradient",
+      },
+      {
+        name: "tailwind",
+        color: "pink-text-gradient",
+      },
+    ],
+    image: restarunt,
+    source_code_link: "https://github.com/",
+  },
   {
     name: "Car Rent",
     description:
