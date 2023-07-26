@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
 import { SectionWrapper } from "../hoc";
 import { styles } from "../styles";
 import { slideIn } from "../utils/motion";
@@ -19,52 +20,42 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		setLoading(true);
 
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
+		emailjs
+		.send(
+			import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+			import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+			{
+			from_name: form.name,
+			to_name: "robert maina",
+			from_email: form.email,
+			to_email: "mainrobert04@gmail.com",
+			message: form.message,
+			},
+			import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+		)
+		.then(
+			() => {
+			setLoading(false);
+			alert("Thank you. I will get back to you as soon as possible.");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
+			setForm({
+				name: "",
+				email: "",
+				message: "",
+			});
+			},
+			(error) => {
+			setLoading(false);
+			console.error(error);
 
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "robert maina",
-          from_email: form.email,
-          to_email: "mainrobert04@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
-  };
+			alert("Ahh, something went wrong. Please try again.");
+			}
+		);
+	};
 
   return (
     <div
@@ -82,11 +73,17 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className='mt-12 flex flex-col gap-8'
         >
+          {error &&
+			<div className="py-2 my-2 mt-2 text-center text-white bg-red-300 rounded-lg">
+				{error.message}
+			</div>
+            }
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Name</span>
             <input
               type='text'
               name='name'
+			  {...register('email')}
               value={form.name}
               onChange={handleChange}
               placeholder="What's your good name?"
@@ -97,16 +94,19 @@ const Contact = () => {
             <span className='text-white font-medium mb-4'>Your email</span>
             <input
               type='email'
+			  {...register('email')}
               name='email'
               value={form.email}
               onChange={handleChange}
               placeholder="What's your web address?"
               className='bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium'
             />
+			
           </label>
           <label className='flex flex-col'>
             <span className='text-white font-medium mb-4'>Your Message</span>
             <textarea
+				{...register('email')}
               rows={7}
               name='message'
               value={form.message}
