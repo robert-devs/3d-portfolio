@@ -231,7 +231,7 @@ const projects = [
       "A modern UI bank business app can streamline financial transactions and provide real-time data insights to help businesses make informed decisions.",
     tags: [
       {
-        name: "react",
+        name: "nextJs",
         color: "blue-text-gradient",
       },
       
@@ -316,7 +316,7 @@ const projects = [
       "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
     tags: [
       {
-        name: "nextjs",
+        name: "nextJs",
         color: "blue-text-gradient",
       },
       {
